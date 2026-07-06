@@ -1,0 +1,17 @@
+{
+  "name": "Dampingcare - Rekap Pendampingan",
+  "short_name": "Dampingcare",
+  "description": "Aplikasi rekap pendampingan Dampingcare",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E4E4FF",
+  "theme_color": "#FB5EA8",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
