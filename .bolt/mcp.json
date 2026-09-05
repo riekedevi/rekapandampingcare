@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "google_sheets": {
+      "enabled": false
+    }
+  }
+}
