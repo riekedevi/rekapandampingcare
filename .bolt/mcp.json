@@ -5,6 +5,9 @@
     },
     "granola": {
       "enabled": true
+    },
+    "shaders": {
+      "enabled": true
     }
   }
 }
