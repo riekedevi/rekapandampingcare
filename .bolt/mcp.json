@@ -2,6 +2,9 @@
   "mcpServers": {
     "google_sheets": {
       "enabled": false
+    },
+    "granola": {
+      "enabled": true
     }
   }
 }
