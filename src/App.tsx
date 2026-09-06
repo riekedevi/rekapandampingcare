@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info } from 'lucide-react';
+import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info, Sparkles } from 'lucide-react';
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXQCK9ojnOiCcJXEfx5oMMeRnfCVWK8GquFvPB-lRiRZoVrW3ryHcG4OgEwzxHo5nW/exec';
 
@@ -19,6 +19,17 @@ const emptyForm: Rekapan = {
   lokasi: '',
   pendamping: '',
 };
+
+const MONTHS_ID = [
+  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
+];
+
+function formatTanggal(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  if (!y || !m || !d) return iso;
+  return `${d} ${MONTHS_ID[m - 1]} ${y}`;
+}
 
 export default function App() {
   const [form, setForm] = useState<Rekapan>(emptyForm);
@@ -151,6 +162,27 @@ export default function App() {
                 placeholder="Masukkan nama pendamping"
                 className="w-full px-4 py-3.5 rounded-2xl bg-damping-bg/40 border border-transparent focus:border-damping-pink focus:bg-white focus:outline-none transition-all duration-200 text-sm placeholder:text-black/35"
               />
+            </div>
+
+            {/* Pratinjau Hasil Akhir */}
+            <div className="rounded-2xl bg-gradient-to-br from-damping-pink/8 to-damping-pink/4 border border-damping-pink/15 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles className="w-4 h-4 text-damping-pink" strokeWidth={2} />
+                <span className="text-xs font-semibold text-damping-pink uppercase tracking-wide">Pratinjau Hasil Akhir</span>
+              </div>
+              <p className="text-sm text-black/80 leading-relaxed">
+                {form.pendampingan || form.tanggal || form.lokasi || form.pendamping ? (
+                  <>
+                    Hasil Akhir Pendampingan{' '}
+                    {form.pendampingan && <span className="font-semibold">{form.pendampingan}</span>}
+                    {form.tanggal && <> pada <span className="font-semibold">{formatTanggal(form.tanggal)}</span></>}
+                    {form.lokasi && <> di <span className="font-semibold">{form.lokasi}</span></>}
+                    {form.pendamping && <> oleh <span className="font-semibold">{form.pendamping}</span></>}
+                  </>
+                ) : (
+                  <span className="text-black/40 italic">Isi form di atas untuk melihat pratinjau hasil akhir.</span>
+                )}
+              </p>
             </div>
 
             {/* Info note */}
