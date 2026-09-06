@@ -33,7 +33,7 @@ function formatTanggal(iso: string): string {
 
 function buildPratinjau(form: Rekapan): string {
   const parts: string[] = [];
-  if (form.pendampingan) parts.push(form.pendampingan);
+  if (form.pendampingan) parts.push(`Pendampingan ${form.pendampingan}`);
   if (form.tanggal) parts.push(`pada ${formatTanggal(form.tanggal)}`);
   if (form.lokasi) parts.push(`di ${form.lokasi}`);
   if (form.pendamping) parts.push(`oleh ${form.pendamping}`);
@@ -180,7 +180,7 @@ export default function App() {
               <p className="text-sm text-black/80 leading-relaxed mt-2">
                 {form.pendampingan || form.tanggal || form.lokasi || form.pendamping ? (
                   <>
-                    {form.pendampingan && <span className="font-semibold">{form.pendampingan}</span>}
+                    {form.pendampingan && <>Pendampingan <span className="font-semibold">{form.pendampingan}</span></>}
                     {form.tanggal && <> pada <span className="font-semibold">{formatTanggal(form.tanggal)}</span></>}
                     {form.lokasi && <> di <span className="font-semibold">{form.lokasi}</span></>}
                     {form.pendamping && <> oleh <span className="font-semibold">{form.pendamping}</span></>}
