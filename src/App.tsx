@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info } from 'lucide-react';
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHMml43PJZUSjMlMWMfRhf_XMCMKiomEZy64K_5poSi6w_35a2i5BSdX8OTl24rBQ0/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyorPFSqvax5xyKr0TrcHQxt6FpOVzFCXSJF0ReXgX_B2fpPrC8s7jppQLz6tf6VVev/exec';
 
 const DRIVE_LINK =
   'https://drive.google.com/drive/folders/1N9XgAOuuxexa5MPWDWbLolMIpgbT4rfk?usp=drive_link';
@@ -42,7 +42,7 @@ export default function App() {
     }
     setSaving(true);
     try {
-      const response = await fetch(APPS_SCRIPT_URL, {
+      await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -53,9 +53,6 @@ export default function App() {
           pendamping: form.pendamping,
         }),
       });
-      if (!response.ok && response.type !== 'opaque') {
-        throw new Error('Request failed');
-      }
       showToast('success', 'Rekapan berhasil disimpan dan dikirim ke pengelola.');
       setForm(emptyForm);
     } catch {
