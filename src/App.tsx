@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info } from 'lucide-react';
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXQCK9ojnOiCcJXEfx5oMMeRnfCVWK8GquFvPB-lRiRZoVrW3ryHcG4OgEwzxHo5nW/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxBzojMakxjVVnThsmD2Kggxbssi27V7l0RAGlbP5Y-9etW1OqI8HvvxA5jUA5ahY/exec';
 
 const DRIVE_LINK =
   'https://drive.google.com/drive/folders/1N9XgAOuuxexa5MPWDWbLolMIpgbT4rfk?usp=drive_link';
