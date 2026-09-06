@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info, Sparkles } from 'lucide-react';
+import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info } from 'lucide-react';
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXQCK9ojnOiCcJXEfx5oMMeRnfCVWK8GquFvPB-lRiRZoVrW3ryHcG4OgEwzxHo5nW/exec';
 
@@ -164,23 +164,19 @@ export default function App() {
               />
             </div>
 
-            {/* Pratinjau Hasil Akhir */}
+            {/* Pratinjau */}
             <div className="rounded-2xl bg-gradient-to-br from-damping-pink/8 to-damping-pink/4 border border-damping-pink/15 p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Sparkles className="w-4 h-4 text-damping-pink" strokeWidth={2} />
-                <span className="text-xs font-semibold text-damping-pink uppercase tracking-wide">Pratinjau Hasil Akhir</span>
-              </div>
-              <p className="text-sm text-black/80 leading-relaxed">
+              <span className="text-xs font-semibold text-damping-pink uppercase tracking-wide">Pratinjau</span>
+              <p className="text-sm text-black/80 leading-relaxed mt-2">
                 {form.pendampingan || form.tanggal || form.lokasi || form.pendamping ? (
                   <>
-                    Hasil Akhir Pendampingan{' '}
                     {form.pendampingan && <span className="font-semibold">{form.pendampingan}</span>}
                     {form.tanggal && <> pada <span className="font-semibold">{formatTanggal(form.tanggal)}</span></>}
                     {form.lokasi && <> di <span className="font-semibold">{form.lokasi}</span></>}
                     {form.pendamping && <> oleh <span className="font-semibold">{form.pendamping}</span></>}
                   </>
                 ) : (
-                  <span className="text-black/40 italic">Isi form di atas untuk melihat pratinjau hasil akhir.</span>
+                  <span className="text-black/40 italic">Isi form di atas untuk melihat pratinjau.</span>
                 )}
               </p>
             </div>
