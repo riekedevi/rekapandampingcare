@@ -31,6 +31,15 @@ function formatTanggal(iso: string): string {
   return `${d} ${MONTHS_ID[m - 1]} ${y}`;
 }
 
+function buildPratinjau(form: Rekapan): string {
+  const parts: string[] = [];
+  if (form.pendampingan) parts.push(form.pendampingan);
+  if (form.tanggal) parts.push(`pada ${formatTanggal(form.tanggal)}`);
+  if (form.lokasi) parts.push(`di ${form.lokasi}`);
+  if (form.pendamping) parts.push(`oleh ${form.pendamping}`);
+  return parts.join(' ');
+}
+
 export default function App() {
   const [form, setForm] = useState<Rekapan>(emptyForm);
   const [saving, setSaving] = useState(false);
@@ -62,6 +71,7 @@ export default function App() {
           tanggal: form.tanggal,
           lokasi: form.lokasi,
           pendamping: form.pendamping,
+          pratinjau: buildPratinjau(form),
         }),
       });
       showToast('success', 'Rekapan berhasil disimpan dan dikirim ke pengelola.');
