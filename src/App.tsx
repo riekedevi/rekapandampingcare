@@ -76,7 +76,7 @@ export default function App() {
         {/* Header */}
         <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-lg border-b border-black/5">
           <div className="px-5 py-3.5 flex items-center gap-3">
-            <img src="/logo.svg" alt="Dampingcare" className="w-11 h-11 shrink-0" />
+            <img src="/cropped_circle_image_(1).webp" alt="Dampingcare" className="w-11 h-11 shrink-0 rounded-full object-cover" />
             <div className="min-w-0">
               <h1 className="text-lg font-bold leading-tight truncate">Dampingcare</h1>
               <p className="text-xs text-black/50 leading-tight">Rekap Pendampingan</p>
