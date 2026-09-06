@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
-import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2 } from 'lucide-react';
-import { supabase } from './supabaseClient';
+import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info } from 'lucide-react';
+
+const APPS_SCRIPT_URL = 'REPLACE_WITH_YOUR_EXEC_URL';
 
 const DRIVE_LINK =
   'https://drive.google.com/drive/folders/1N9XgAOuuxexa5MPWDWbLolMIpgbT4rfk?usp=drive_link';
@@ -41,14 +42,21 @@ export default function App() {
     }
     setSaving(true);
     try {
-      const { error } = await supabase.from('rekapan').insert({
-        pendampingan: form.pendampingan,
-        tanggal: form.tanggal,
-        lokasi: form.lokasi,
-        pendamping: form.pendamping,
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          pendampingan: form.pendampingan,
+          tanggal: form.tanggal,
+          lokasi: form.lokasi,
+          pendamping: form.pendamping,
+        }),
       });
-      if (error) throw error;
-      showToast('success', 'Rekapan berhasil disimpan.');
+      if (!response.ok && response.type !== 'opaque') {
+        throw new Error('Request failed');
+      }
+      showToast('success', 'Rekapan berhasil disimpan dan dikirim ke pengelola.');
       setForm(emptyForm);
     } catch {
       showToast('error', 'Gagal menyimpan. Periksa koneksi Anda.');
@@ -146,6 +154,14 @@ export default function App() {
                 placeholder="Masukkan nama pendamping"
                 className="w-full px-4 py-3.5 rounded-2xl bg-damping-bg/40 border border-transparent focus:border-damping-pink focus:bg-white focus:outline-none transition-all duration-200 text-sm placeholder:text-black/35"
               />
+            </div>
+
+            {/* Info note */}
+            <div className="flex items-start gap-2.5 px-4 py-3 rounded-2xl bg-damping-bg/50">
+              <Info className="w-4 h-4 text-damping-pink shrink-0 mt-0.5" strokeWidth={2} />
+              <p className="text-xs text-black/60 leading-relaxed">
+                Rekapan akan disimpan ke Google Sheet dan dikirim ke pengelola Dampingcare.
+              </p>
             </div>
 
             {/* Buttons */}
