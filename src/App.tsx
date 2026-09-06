@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Heart, Calendar, MapPin, User, Save, Upload, CheckCircle, X, Loader2, Info } from 'lucide-react';
 
-const APPS_SCRIPT_URL = 'REPLACE_WITH_YOUR_EXEC_URL';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHMml43PJZUSjMlMWMfRhf_XMCMKiomEZy64K_5poSi6w_35a2i5BSdX8OTl24rBQ0/exec';
 
 const DRIVE_LINK =
   'https://drive.google.com/drive/folders/1N9XgAOuuxexa5MPWDWbLolMIpgbT4rfk?usp=drive_link';
